@@ -1,0 +1,46 @@
+body {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+#game-area {
+    margin-top: 0.5rem;
+    width: 60%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#player-input-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#player1-input-wrapper, #player2-input-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-area {
+    margin-top: 1rem;
+}
+
+#game-board-wrapper {
+    width: 80%;
+    margin-top: 2rem;
+    min-height: 80%;
+    display: flex;
+    justify-content: center;
+}
+
+#game-board {
+    width: 20rem;
+    height: 20rem;
+}
+
+td {
+    border: 1px solid black;
+}

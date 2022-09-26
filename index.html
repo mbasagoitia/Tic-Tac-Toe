@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div id="game-area">
+        <h1 id="title">Tic-Tac-Toe</h1>
+        <div id="player-input-wrapper">
+                <div id="player1-input-wrapper">
+                    <p class="player-input">Player 1</p>
+                    <input type="text" id="name1" name="name1" placeholder="Enter Your Name...">
+                    <div class="radio-area">
+                        <label for="symbol1a">X</label> 
+                        <input type="radio" id="symbol1a" name="symbola" value="x" checked>                   
+                        <label for="symbol2">O</label> 
+                        <input type="radio" id="symbol2a" name="symbola" value="o"> 
+                    </div>
+                </div>
+                <div id="player2-input-wrapper">
+                    <p class="player-input">Player 2</p>
+                    <input type="text" id="name2" name="name2" placeholder="Enter Your Name...">
+                    <div class="radio-area">
+                        <label for="symbol1b">X</label> 
+                        <input type="radio" id="symbol1b" name="symbolb" value="x">                   
+                        <label for="symbol2b">O</label> 
+                        <input type="radio" id="symbol2b" name="symbolb" value="o" checked>  
+                    </div>
+                </div>
+        </div>
+        <div id="game-board-wrapper">
+            <table id="game-board">
+                <tr id="row-1">
+                    <td id="s1"></td>
+                    <td id="s2"></td>
+                    <td id="s3"></td>
+                </tr>
+                <tr id="row-2">
+                    <td id="s4"></td>
+                    <td id="s5"></td>
+                    <td id="s6"></td>
+                </tr>
+                <tr id="row-3">
+                    <td id="s7"></td>
+                    <td id="s8"></td>
+                    <td id="s9"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
