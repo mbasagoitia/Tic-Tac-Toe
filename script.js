@@ -23,6 +23,15 @@ class Game {
         this.player2 = player2;
     }
 
+    playGame() {
+        //hide player input area
+        //call create board method
+        //when a square is clicked, call fillSquare with player 1 as first active player
+        //call switchPlayer
+        //when a square is clicked, call fillSquare
+        //call checkIfWon. If false, switchPlayer. If true, display won message and reset game
+    }
+
     createBoard() {
         //this will store the data of the player entries
 
@@ -35,14 +44,9 @@ class Game {
 
     }
 
-    startGame() {
-        //hide player input area
-        //call create board method
-        //display game info (whose turn it is), game won
-    }
-
-    displayPlayerTurn () {
-        //tell the users which player is currently active
+    switchPlayer () {
+        //change the players' active status, if applicable
+        //display which player is currently active
     }
 
     fillSquare() {
@@ -50,14 +54,9 @@ class Game {
         //fill square with the appropriate symbol
     }
 
-    switchPlayer() {
-        //if player1 just played, switch to player 2 and vice versa
-        //do this by changing isActive property
-    }
-
-
     checkIfWon() {
         //if player1 symbol OR player 2 symbol occurs three times in a row, display won message
+        //call resetGame
     }
 
     resetGame() {
@@ -77,3 +76,5 @@ class Player {
     }
 }
 
+
+//add event listener to the start game button that calls Game.playGame()

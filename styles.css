@@ -28,6 +28,10 @@ body {
     margin-top: 1rem;
 }
 
+#start-btn {
+    margin-top: 1rem;
+}
+
 #game-board-wrapper {
     width: 80%;
     margin-top: 2rem;
