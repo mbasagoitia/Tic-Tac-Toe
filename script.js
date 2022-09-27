@@ -92,14 +92,16 @@ class Game {
                 } else {
                     activeSymbol = "o";
                 }
-                square.textContent = activeSymbol;
-                this.checkIfWon();
-                this.switchPlayer();
+                //if the square is taken, don't let the player go there
+                if (square.textContent) {
+                    square.textContent = square.textContent;
+                } else {
+                    square.textContent = activeSymbol;
+                    this.checkIfWon();
+                    this.switchPlayer();
+                }
             })
         })
-
-        //update the gameBoard array with the applicable symbol
-
         
     }
 
@@ -119,6 +121,7 @@ class Game {
         //display which player is currently active
     }
 
+    //need to add logic for cat's game
 
     checkIfWon() {
         //there has got to be a better way to do this
