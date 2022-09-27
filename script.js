@@ -3,7 +3,10 @@ const row1 = document.querySelector("#row-1");
 const row2 = document.querySelector("#row-2");
 const row3 = document.querySelector("#row-3");
 
+
 //select game board squares
+const squares = document.querySelectorAll(".sq");
+
 const s1 = document.querySelector("#s1");
 const s2 = document.querySelector("#s2");
 const s3 = document.querySelector("#s3");
@@ -25,14 +28,15 @@ class Game {
 
     playGame() {
         //hide player input area
-        //call create board method
-        //when a square is clicked, call fillSquare with player 1 as first active player
+        this.createBoard();
+        this.takeTurn();
         //call switchPlayer
-        //when a square is clicked, call fillSquare
-        //call checkIfWon. If false, switchPlayer. If true, display won message and reset game
+        //when a square is clicked, call fillSquare and then call switchPlayer again
+        //call checkIfWon after every click. If false, switchPlayer. If true, display won message and reset game
     }
 
     createBoard() {
+        //fills the gameBoard rows with "empty" squares 
         //this will store the data of the player entries
 
         const row1 = ["empty", "empty", "empty"];
@@ -41,18 +45,50 @@ class Game {
         this.gameBoard.push(row2);
         const row3 = ["empty", "empty", "empty"];
         this.gameBoard.push(row3);
+        console.log(this.gameBoard);
 
+    }
+
+
+    takeTurn() {
+
+        //fill square with the appropriate symbol
+        let activeSymbol;
+
+        squares.forEach((square) => {
+            square.addEventListener("click", () => {
+                if (this.player1.isActive) {
+                    activeSymbol = "x";
+                } else {
+                    activeSymbol = "o";
+                }
+                square.innerText = activeSymbol;
+                //call switchPlayer
+                this.switchPlayer();
+            })
+        })
+
+        //update the gameBoard array with the applicable symbol
+
+        
     }
 
     switchPlayer () {
-        //change the players' active status, if applicable
+
+        if (this.player1.isActive) {
+            this.player1.isActive = false;
+            this.player2.isActive = true;
+            console.log(`player 2 active`);
+        } else if (this.player2.isActive) {
+            this.player1.isActive = true;
+            this.player2.isActive = false;
+            console.log(`player 1 active`);
+        }
+
+        //change the players' active status
         //display which player is currently active
     }
 
-    fillSquare() {
-        //update the gameBoard array with the symbols
-        //fill square with the appropriate symbol
-    }
 
     checkIfWon() {
         //if player1 symbol OR player 2 symbol occurs three times in a row, display won message
@@ -78,3 +114,10 @@ class Player {
 
 
 //add event listener to the start game button that calls Game.playGame()
+
+const Marika = new Player("Marika", 1, "x", true);
+const Alex = new Player("Alex", 2, "o", false);
+
+const Tictactoe = new Game([], Marika, Alex);
+
+Tictactoe.playGame();
