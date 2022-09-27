@@ -11,15 +11,19 @@
 <body>
     <div id="game-area">
         <h1 id="title">Tic-Tac-Toe</h1>
+        <!--this sections starts out hidden and appears when the game begins-->
+        <div id="game-display-area">
+
+        </div>
         <div id="player-input-wrapper">
                 <div id="player1-input-wrapper">
                     <p class="player-input">Player 1</p>
                     <input type="text" id="name1" name="name1" placeholder="Enter Your Name...">
                     <div class="radio-area">
                         <label for="symbol1a">X</label> 
-                        <input type="radio" id="symbol1a" name="symbola" value="x" checked>                   
+                        <input type="radio" id="symbol1a" name="symbola" value="x" class="radio" checked>                   
                         <label for="symbol2">O</label> 
-                        <input type="radio" id="symbol2a" name="symbola" value="o"> 
+                        <input type="radio" id="symbol2a" name="symbola" value="o" class="radio"> 
                     </div>
                 </div>
                 <div id="player2-input-wrapper">
@@ -27,31 +31,27 @@
                     <input type="text" id="name2" name="name2" placeholder="Enter Your Name...">
                     <div class="radio-area">
                         <label for="symbol1b">X</label> 
-                        <input type="radio" id="symbol1b" name="symbolb" value="x">                   
+                        <input type="radio" id="symbol1b" name="symbolb" value="x" class="radio">                   
                         <label for="symbol2b">O</label> 
-                        <input type="radio" id="symbol2b" name="symbolb" value="o" checked>  
+                        <input type="radio" id="symbol2b" name="symbolb" value="o" class="radio" checked>  
                     </div>
                 </div>
+            <button id="start-btn">Start Game</button>
         </div>
-        <button id="start-btn">Start Game</button>
         <div id="game-board-wrapper">
-            <table id="game-board">
-                <tr id="row-1">
-                    <td id="s1" class="sq"></td>
-                    <td id="s2" class="sq"></td>
-                    <td id="s3" class="sq"></td>
-                </tr>
-                <tr id="row-2">
-                    <td id="s4" class="sq"></td>
-                    <td id="s5" class="sq"></td>
-                    <td id="s6" class="sq"></td>
-                </tr>
-                <tr id="row-3">
-                    <td id="s7" class="sq"></td>
-                    <td id="s8" class="sq"></td>
-                    <td id="s9" class="sq"></td>
-                </tr>
-            </table>
+            <div id="game-board">
+                    <div id="s1" class="sq"></div>
+                    <div id="s2" class="sq"></div>
+                    <div id="s3" class="sq"></div>
+
+                    <div id="s4" class="sq"></div>
+                    <div id="s5" class="sq"></div>
+                    <div id="s6" class="sq"></div>
+
+                    <div id="s7" class="sq"></div>
+                    <div id="s8" class="sq"></div>
+                    <div id="s9" class="sq"></div>
+            </div>
         </div>
     </div>
 </body>

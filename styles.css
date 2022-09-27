@@ -5,6 +5,10 @@ body {
     text-align: center;
 }
 
+#name1, #name3 {
+    width: 90%;
+}
+
 #game-area {
     margin-top: 0.5rem;
     width: 60%;
@@ -17,11 +21,13 @@ body {
 #player-input-wrapper {
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 #player1-input-wrapper, #player2-input-wrapper {
     display: flex;
     flex-direction: column;
+    width: 50%;
 }
 
 .radio-area {
@@ -33,19 +39,50 @@ body {
 }
 
 #game-board-wrapper {
-    width: 80%;
+    width: 80vw;
+    max-width: 400px;
     margin-top: 2rem;
-    min-height: 80%;
     display: flex;
     justify-content: center;
 }
 
 #game-board {
-    width: 20rem;
-    height: 20rem;
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 1/1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
 }
 
 .sq {
     border: 1px solid black;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#s1, #s4, #s7 {
+    border-left: none;
+}
+
+#s3, #s6, #s9 {
+    border-right: none;
+}
+
+#s1, #s3, #s2 {
+    border-top: none;
+}
+
+#s7, #s8, #s9 {
+    border-bottom: none;
+}
+
+.no-display {
+    display: none !important;
+}
+
+.red {
     background-color: red;
 }
