@@ -1,5 +1,6 @@
-//select game board squares
+//select HTML elements
 const squares = document.querySelectorAll(".sq");
+const gameBoard = document.querySelector("#game-board");
 
 const s1 = document.querySelector("#s1");
 const s2 = document.querySelector("#s2");
@@ -34,36 +35,52 @@ const playAgainBtn = document.querySelector("#play-again-btn");
 //weird bug where I can't change player 2 radio button, but player one works fine
 radioButtons.forEach((button) => {
     button.addEventListener("change", () => {
+
         if (p1Radiox.checked) {
             p2Radioo.checked = true;
-        } else if (p2Radioo.checked) {
+        } 
+        if (p1Radioo.checked) {
             p2Radiox.checked = true;
-        } else if (p2Radiox.checked) {
+        } 
+        if (p2Radiox.checked) {
             p1Radioo.checked = true;
-        } else if (p2Radioo.checked) {
+        } 
+        if (p2Radioo.checked) {
             p1Radiox.checked = true;
         }
     })
 })
 
-
-//need to find out how to read which radio button is checked
 startButton.addEventListener("click", () => {
+    startGame();
+})
+
+function startGame() {
     let p1symbol;
     if (p1Radiox.checked) {
         p1symbol = "X";
+    } else if (p1Radioo.checked) {
+        p1symbol = "O";
     }
+
+    let p2symbol;
+    if (p2Radiox.checked) {
+        p2symbol = "X";
+    } else if (p2Radioo.checked) {
+        p2symbol = "O";
+    }
+ 
     if (!player1Input.value || !player2Input.value) {
         alert("Please enter two valid player names.")
     } else {
         playerInput.classList.add("no-display");
-        const Player1 = new Player(player1Input.value, 1, "x", true);
-        const Player2 = new Player(player2Input.value, 2, "o", false);
+        const Player1 = new Player(player1Input.value, 1, p1symbol, true);
+        const Player2 = new Player(player2Input.value, 2, p2symbol, false);
     
         const Tictactoe = new Game(Player1, Player2);
         Tictactoe.playGame();
     }
-})
+}
 
 class Player {
     constructor(name, playerNumber, symbol, isActive) {
@@ -84,30 +101,30 @@ class Game {
     playGame() {
         playerTurnMsg.textContent = `${this.player1.name}'s turn`;
         this.takeTurn();
-        //call switchPlayer
-        //when a square is clicked, call fillSquare and then call switchPlayer again
-        //call checkIfWon after every click. If false, switchPlayer. If true, display won message and reset game
     }
 
     takeTurn() {
-
         //fill square with the appropriate symbol
         let activeSymbol;
 
         squares.forEach((square) => {
             square.addEventListener("click", () => {
+                let activePlayer;
+
                 if (this.player1.isActive) {
-                    activeSymbol = "X";
-                    playerTurnMsg.textContent = `${this.player2.name}'s turn`;
+                    activeSymbol = this.player1.symbol;
+                    activePlayer = this.player2;
                 } else {
-                    activeSymbol = "O";
-                    playerTurnMsg.textContent = `${this.player1.name}'s turn`;
+                    activeSymbol = this.player2.symbol;
+                    activePlayer = this.player1;
                 }
+
                 //if the square is taken, don't let the player go there
                 if (square.textContent) {
                     square.textContent = square.textContent;
                 } else {
                     square.textContent = activeSymbol;
+                    playerTurnMsg.textContent = `${activePlayer.name}'s turn`;
                     this.checkIfWon();
                     this.switchPlayer();
                 }
@@ -128,8 +145,6 @@ class Game {
             //console.log(`player 1 active`);
         }
 
-        
-        //display which player is currently active
     }
 
     //need to add logic for cat's game
@@ -137,57 +152,66 @@ class Game {
     checkIfWon() {
         //there has got to be a better way to do this
 
-        if (s1.textContent == "X" && s2.textContent == "X" && s3.textContent == "X") {
+        if (s1.textContent == this.player1.symbol && s2.textContent == this.player1.symbol && s3.textContent == this.player1.symbol) {
             this.displayWinner(this.player1.name);
-        } else if (s4.textContent == "X" && s5.textContent == "X" && s6.textContent == "X") {
+        } else if (s4.textContent == this.player1.symbol && s5.textContent == this.player1.symbol && s6.textContent == this.player1.symbol) {
             this.displayWinner(this.player1.name);
-        } else if (s7.textContent == "X" && s8.textContent == "X" && s9.textContent == "X") {
+        } else if (s7.textContent == this.player1.symbol && s8.textContent == this.player1.symbol && s9.textContent == this.player1.symbol) {
             this.displayWinner(this.player1.name);
-        } else if (s1.textContent == "X" && s4.textContent == "X" && s7.textContent == "X") {
+        } else if (s1.textContent == this.player1.symbol && s4.textContent == this.player1.symbol && s7.textContent == this.player1.symbol) {
             this.displayWinner(this.player1.name);
-        } else if (s2.textContent == "X" && s5.textContent == "X" && s8.textContent == "X") {
+        } else if (s2.textContent == this.player1.symbol && s5.textContent == this.player1.symbol && s8.textContent == this.player1.symbol) {
             this.displayWinner(this.player1.name);
-        } else if (s3.textContent == "X" && s6.textContent == "X" && s9.textContent == "X") {
+        } else if (s3.textContent == this.player1.symbol && s6.textContent == this.player1.symbol && s9.textContent == this.player1.symbol) {
             this.displayWinner(this.player1.name);
-        } else if (s1.textContent == "X" && s5.textContent == "X" && s9.textContent == "X") {
+        } else if (s1.textContent == this.player1.symbol && s5.textContent == this.player1.symbol && s9.textContent == this.player1.symbol) {
             this.displayWinner(this.player1.name);
-        } else if (s3.textContent == "X" && s5.textContent == "X" && s7.textContent == "X") {
+        } else if (s3.textContent == this.player1.symbol && s5.textContent == this.player1.symbol && s7.textContent == this.player1.symbol) {
             this.displayWinner(this.player1.name);
+        } else if (s1.textContent == this.player2.symbol && s2.textContent == this.player2.symbol && s3.textContent == this.player2.symbol) {
+            this.displayWinner(this.player2.name);
+        } else if (s4.textContent == this.player2.symbol && s5.textContent == this.player2.symbol && s6.textContent == this.player2.symbol) {
+            this.displayWinner(this.player2.name);
+        } else if (s7.textContent == this.player2.symbol && s8.textContent == this.player2.symbol && s9.textContent == this.player2.symbol) {
+            this.displayWinner(this.player2.name);
+        } else if (s1.textContent == this.player2.symbol && s4.textContent == this.player2.symbol && s7.textContent == this.player2.symbol) {
+            this.displayWinner(this.player2.name);
+        } else if (s2.textContent == this.player2.symbol && s5.textContent == this.player2.symbol && s8.textContent == this.player2.symbol) {
+            this.displayWinner(this.player2.name);
+        } else if (s3.textContent == this.player2.symbol && s6.textContent == this.player2.symbol && s9.textContent == this.player2.symbol) {
+            this.displayWinner(this.player2.name);
+        } else if (s1.textContent == this.player2.symbol && s5.textContent == this.player2.symbol && s9.textContent == this.player2.symbol) {
+            this.displayWinner(this.player2.name);
+        } else if (s3.textContent == this.player2.symbol && s5.textContent == this.player2.symbol && s7.textContent == this.player2.symbol) {
+            this.displayWinner(this.player2.name);
+        } else if (s1.textContent && s2.textContent && s3.textContent && s4.textContent && s5.textContent && s6.textContent && s7.textContent && s8.textContent && s9.textContent) {
+            this.displayWinner("Cat");
         }
-
-        if (s1.textContent == "O" && s2.textContent == "O" && s3.textContent == "O") {
-            this.displayWinner(this.player2.name);
-        } else if (s4.textContent == "O" && s5.textContent == "O" && s6.textContent == "O") {
-            this.displayWinner(this.player2.name);
-        } else if (s7.textContent == "O" && s8.textContent == "O" && s9.textContent == "O") {
-            this.displayWinner(this.player2.name);
-        } else if (s1.textContent == "O" && s4.textContent == "O" && s7.textContent == "O") {
-            this.displayWinner(this.player2.name);
-        } else if (s2.textContent == "O" && s5.textContent == "O" && s8.textContent == "O") {
-            this.displayWinner(this.player2.name);
-        } else if (s3.textContent == "O" && s6.textContent == "O" && s9.textContent == "O") {
-            this.displayWinner(this.player2.name);
-        } else if (s1.textContent == "O" && s5.textContent == "O" && s9.textContent == "O") {
-            this.displayWinner(this.player2.name);
-        } else if (s3.textContent == "O" && s5.textContent == "O" && s7.textContent == "O") {
-            this.displayWinner(this.player2.name);
-        }
-        //call resetGame
+        
     } 
 
     displayWinner(winningPlayer) {
-        playerTurnMsg.textContent = `${winningPlayer} wins! Congratulations!`;
-        setTimeout(this.displayPlayAgainBtn, 3000);
+        playerTurnMsg.textContent = `${winningPlayer} wins!`;
+        if (winningPlayer == "Cat") {
+            const catPic = document.createElement("img");
+            catPic.classList.add("cat-pic");
+            catPic.setAttribute("src", "img/cat-img.webp");
+            catPic.setAttribute("alt", "angry cat");
+            playerTurnMsg.appendChild(catPic);
+        }
+        this.displayPlayAgainBtn();
+        gameBoard.classList.add("no-click");
     }
 
     displayPlayAgainBtn() {
         playAgainBtn.classList.remove("no-display");
-        console.log("hi");
+        playAgainBtn.addEventListener("click", () => {  
+            this.resetGame();
+        });
     }
 
     resetGame() {
-        //reset gameBoard array
-        //reset the table squares
+        location.reload();
     }
 
 }
