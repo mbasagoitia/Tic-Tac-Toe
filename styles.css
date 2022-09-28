@@ -14,7 +14,6 @@ label {
 }
 
 #name1, #name2 {
-    width: 90%;
     text-align: center;
     font-family: 'Libre Franklin', sans-serif;
     font-weight: bold;
@@ -62,8 +61,7 @@ label {
 
 #player-input-wrapper {
     display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+    gap: 2rem;
 }
 
 #player1-input-wrapper, #player2-input-wrapper {
@@ -146,3 +144,15 @@ label {
     margin: 1rem auto;
 }
 
+@media (max-width: 600px) {
+
+    #player-input-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+
+    #player1-input-wrapper, #player2-input-wrapper {
+        width: 100%;
+    }
+}

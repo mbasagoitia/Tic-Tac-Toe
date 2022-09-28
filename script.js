@@ -74,6 +74,7 @@ function startGame() {
         alert("Please enter two valid player names.")
     } else {
         playerInput.classList.add("no-display");
+        startButton.classList.add("no-display");
         const Player1 = new Player(player1Input.value, 1, p1symbol, true);
         const Player2 = new Player(player2Input.value, 2, p2symbol, false);
     
