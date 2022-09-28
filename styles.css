@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    font-size: 1.2rem;
     font-family: 'Libre Franklin', sans-serif;
     color: white;
     height: fit-content;
@@ -25,14 +26,16 @@ label {
 
 .radio {
     background-color: black;
+    height: 1.2rem;
+    width: 1.2rem;
 }
 
 .radio:checked:after {
-    width: 8px;
-    height: 8px;
-    border-radius: 8px;
-    top: 0.5px;
-    left: 0.5px;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    top: 1.2px;
+    left: 1.4px;
     position: relative;
     background-color: #6E45E1;
     content: '';
@@ -155,4 +158,27 @@ label {
     #player1-input-wrapper, #player2-input-wrapper {
         width: 100%;
     }
+
+    body {
+        font-size: 1.5rem;
+    }
+
+    .radio {
+        background-color: black;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    
+    .radio:checked:after {
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        top: 2px;
+        left: 1.5px;
+    }
+
+    #symbol2a:after, #symbol2b:after {
+        left: 2px;
+    }
+
 }
