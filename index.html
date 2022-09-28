@@ -7,18 +7,19 @@
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500&family=DM+Sans&family=DM+Serif+Text&family=Libre+Franklin:wght@200&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="game-area">
-        <h1 id="title">Tic-Tac-Toe</h1>
-        <!--this sections starts out hidden and appears when the game begins-->
         <div id="game-display-area">
-
+            <p id="player-turn-msg"><button id="play-again-btn" class="no-display">Play Again</button></p>
         </div>
         <div id="player-input-wrapper">
                 <div id="player1-input-wrapper">
                     <p class="player-input">Player 1</p>
-                    <input type="text" id="name1" name="name1" placeholder="Enter Your Name...">
+                    <input type="text" id="name1" name="name1" placeholder="Enter Your Name..." autocomplete="off">
                     <div class="radio-area">
                         <label for="symbol1a">X</label> 
                         <input type="radio" id="symbol1a" name="symbola" value="x" class="radio" checked>                   
@@ -28,7 +29,7 @@
                 </div>
                 <div id="player2-input-wrapper">
                     <p class="player-input">Player 2</p>
-                    <input type="text" id="name2" name="name2" placeholder="Enter Your Name...">
+                    <input type="text" id="name2" name="name2" placeholder="Enter Your Name..." autocomplete="off">
                     <div class="radio-area">
                         <label for="symbol1b">X</label> 
                         <input type="radio" id="symbol1b" name="symbolb" value="x" class="radio">                   

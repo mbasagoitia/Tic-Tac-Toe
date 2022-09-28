@@ -1,22 +1,63 @@
 body {
+    margin: 0;
+    font-family: 'Libre Franklin', sans-serif;
+    color: white;
     display: flex;
     justify-content: center;
     min-height: 100vh;
     text-align: center;
+    background: linear-gradient(to bottom right, #6E45E1, #89D4CF);
 }
 
-#name1, #name3 {
-    width: 90%;
+label {
+    font-weight: bold;
 }
+
+#name1, #name2 {
+    width: 90%;
+    text-align: center;
+    font-family: 'Libre Franklin', sans-serif;
+    font-weight: bold;
+}
+
+#name1:focus, #name2:focus {
+    outline: none;
+}
+
+.radio {
+    background-color: black;
+}
+
+.radio:checked:after {
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+    top: 0.5px;
+    left: 0.5px;
+    position: relative;
+    background-color: #6E45E1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+#player-turn-msg {
+    font-size: 2rem;
+}
+
 
 #game-area {
-    margin-top: 0.5rem;
-    width: 60%;
+    background: transparent;
+    margin-top: 0;
+    width: 50%;
     max-width: 800px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 
 #player-input-wrapper {
     display: flex;
@@ -34,8 +75,12 @@ body {
     margin-top: 1rem;
 }
 
-#start-btn {
+#start-btn, #play-again-btn {
     margin-top: 1rem;
+    padding: 1em;
+    color: white;
+    background: linear-gradient(to bottom right, #6E45E1, #89D4CF);
+    border: 1px solid white;
 }
 
 #game-board-wrapper {
@@ -47,8 +92,9 @@ body {
 }
 
 #game-board {
+    margin-top: 0.5rem;
     width: 100%;
-    max-width: 600px;
+    max-width: 300px;
     aspect-ratio: 1/1;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -56,7 +102,7 @@ body {
 }
 
 .sq {
-    border: 1px solid black;
+    border: 1px solid white;
     font-size: 3rem;
     display: flex;
     justify-content: center;
@@ -84,6 +130,4 @@ body {
     display: none !important;
 }
 
-.red {
-    background-color: red;
-}
+
