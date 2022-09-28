@@ -16,8 +16,10 @@ label {
 
 #name1, #name2 {
     text-align: center;
+    font-size: 1.2rem;
     font-family: 'Libre Franklin', sans-serif;
     font-weight: bold;
+    padding: 0.8rem 1.5rem;
 }
 
 #name1:focus, #name2:focus {
@@ -34,7 +36,7 @@ label {
     width: 0.75rem;
     height: 0.75rem;
     border-radius: 50%;
-    top: 1.2px;
+    top: 1.3px;
     left: 1.4px;
     position: relative;
     background-color: #6E45E1;
@@ -79,7 +81,7 @@ label {
 
 #start-btn, #play-again-btn {
     margin-top: 1rem;
-    padding: 1em;
+    padding: 2em;
     color: white;
     background: linear-gradient(to bottom right, #6E45E1, #89D4CF);
     border: 1px solid white;
@@ -149,6 +151,10 @@ label {
 
 @media (max-width: 600px) {
 
+    body {
+        font-size: 1.5rem;
+    }
+
     #player-input-wrapper {
         flex-direction: column;
         align-items: center;
@@ -159,8 +165,12 @@ label {
         width: 100%;
     }
 
-    body {
-        font-size: 1.5rem;
+    #name1, #name2 {
+        padding: 1rem;
+    }
+
+    #start-btn {
+        padding: 1.5rem;
     }
 
     .radio {
@@ -174,7 +184,7 @@ label {
         height: 1rem;
         border-radius: 50%;
         top: 2px;
-        left: 1.5px;
+        left: 1.8px;
     }
 
     #symbol2a:after, #symbol2b:after {
